@@ -201,10 +201,10 @@ function BrandLogosCarousel({ t }) {
 function HeroSlide({ slide, index, t }) {
   return (
     <div
-      className={`flex flex-col md:flex-row items-center gap-6 sm:gap-8 lg:gap-12 py-6 h-[450px] md:h-[350px]`}
+      className={`flex flex-col md:flex-row items-center gap-6 sm:gap-8 lg:gap-12 py-6 min-h-[350px] md:h-[350px]`}
     >
       {/* Text Content */}
-      <div className="flex-1 w-full md:w-auto flex items-center">
+      <div className="flex-1 w-full md:w-auto flex items-center order-2 md:order-1">
         <div className="max-w-xl">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight sm:leading-tight lg:leading-tight tracking-tight text-gray-900 dark:text-white mb-4 sm:mb-6 max-w-full break-words">
             {t(slide.title)}
@@ -255,7 +255,7 @@ function HeroSlide({ slide, index, t }) {
       </div>
 
       {/* Hero Image */}
-      <div className="flex-1 w-full md:w-auto flex items-center justify-center">
+      <div className="flex-1 w-full md:w-auto flex items-center justify-center order-1 md:order-2">
         <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg">
           <div
             className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-20 rounded-2xl blur-3xl`}
