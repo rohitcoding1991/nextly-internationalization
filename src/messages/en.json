@@ -22,11 +22,29 @@
     }
   },
   "Hero": {
-    "title": "Free Landing Page Template for startups",
-    "description": "Nextly is a free landing page & marketing website template for startups and indie projects. Its built with Next.js & TailwindCSS. And its completely open-source.",
     "button": "Learn More",
     "view": "View on Github",
-    "info": "Trusted by <span>2000+</span> customers worldwide"
+    "info": "Trusted by <span>2000+</span> customers worldwide",
+    "slide1": {
+      "title": "Modern Software Development",
+      "description": "Build high-performance applications using modern frameworks, clean architecture, and scalable development practices."
+    },
+    "slide2": {
+      "title": "Cloud & Infrastructure",
+      "description": "Deploy, scale, and manage applications seamlessly with cloud-native infrastructure and DevOps automation."
+    },
+    "slide3": {
+      "title": "AI & Machine Learning",
+      "description": "Leverage artificial intelligence and machine learning to automate workflows and unlock smarter decision-making."
+    },
+    "slide4": {
+      "title": "Cybersecurity Solutions",
+      "description": "Protect your systems and data with enterprise-grade security, monitoring, and compliance-ready solutions."
+    },
+    "slide5": {
+      "title": "Data Analytics & Insights",
+      "description": "Transform raw data into actionable insights with real-time analytics, dashboards, and reporting tools."
+    }
   },
   "RootPage": {
     "info": "Nextly Benefits",

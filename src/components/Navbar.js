@@ -20,7 +20,7 @@ export const Navbar = () => {
 
   return (
     <div className="w-full sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm">
-      <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-1">
+      <nav className="w-full relative flex flex-wrap items-center justify-between py-4 px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Logo  */}
         <Link href="/">
           <span className="flex items-center space-x-2 text-2xl font-medium text-cyan-500 dark:text-gray-100">

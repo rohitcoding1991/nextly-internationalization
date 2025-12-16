@@ -18,33 +18,35 @@ export default function Home({ params }) {
   const t = useTranslations("RootPage");
 
   return (
-    <Container>
+    <>
       <Hero />
-      <SectionTitle preTitle={t("info")} title={t("title")}>
-        {t("description")}
-      </SectionTitle>
+      <Container>
+        <SectionTitle preTitle={t("info")} title={t("title")}>
+          {t("description")}
+        </SectionTitle>
 
-      <Benefits data={benefitOne} imgPos="left" />
-      <Benefits imgPos="right" data={benefitTwo} />
+        <Benefits data={benefitOne} imgPos="left" />
+        <Benefits imgPos="right" data={benefitTwo} />
 
-      <SectionTitle preTitle={t("sectionTitle")} title={t("sectionDesc")}>
-        {t("sectionInfo")}
-      </SectionTitle>
+        <SectionTitle preTitle={t("sectionTitle")} title={t("sectionDesc")}>
+          {t("sectionInfo")}
+        </SectionTitle>
 
-      <Video videoId="fZ0D0cnR88E" />
+        <Video videoId="fZ0D0cnR88E" />
 
-      <SectionTitle preTitle={t("testTitle")} title={t("testDesc")}>
-        {t("testInfo")}
-      </SectionTitle>
+        <SectionTitle preTitle={t("testTitle")} title={t("testDesc")}>
+          {t("testInfo")}
+        </SectionTitle>
 
-      <Testimonials />
+        <Testimonials />
 
-      <SectionTitle preTitle="FAQ" title={t("faqTitle")}>
-        {t("faqDesc")}
-      </SectionTitle>
+        <SectionTitle preTitle="FAQ" title={t("faqTitle")}>
+          {t("faqDesc")}
+        </SectionTitle>
 
-      <Faq />
-      <Cta />
-    </Container>
+        <Faq />
+        <Cta />
+      </Container>
+    </>
   );
 }

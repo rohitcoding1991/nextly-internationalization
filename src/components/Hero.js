@@ -10,46 +10,42 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 // Hero slide data
 const heroSlides = [
   {
     id: 1,
-    title: "Modern Software Development",
-    description:
-      "Build high-performance applications using modern frameworks, clean architecture, and scalable development practices.",
+    title: "slide1.title",
+    description: "slide1.description",
     image: "https://picsum.photos/id/180/1600/900", // coding / dev setup
     gradient: "from-cyan-400 to-cyan-600",
   },
   {
     id: 2,
-    title: "Cloud & Infrastructure",
-    description:
-      "Deploy, scale, and manage applications seamlessly with cloud-native infrastructure and DevOps automation.",
+    title: "slide2.title",
+    description: "slide2.description",
     image: "https://picsum.photos/id/1/1600/900", // servers / infra
     gradient: "from-cyan-500 to-blue-600",
   },
   {
     id: 3,
-    title: "AI & Machine Learning",
-    description:
-      "Leverage artificial intelligence and machine learning to automate workflows and unlock smarter decision-making.",
+    title: "slide3.title",
+    description: "slide3.description",
     image: "https://picsum.photos/id/3/1600/900", // tech / AI abstract
     gradient: "from-blue-400 to-cyan-600",
   },
   {
     id: 4,
-    title: "Cybersecurity Solutions",
-    description:
-      "Protect your systems and data with enterprise-grade security, monitoring, and compliance-ready solutions.",
+    title: "slide4.title",
+    description: "slide4.description",
     image: "https://picsum.photos/id/24/1600/900", // security / tech
     gradient: "from-cyan-600 to-teal-600",
   },
   {
     id: 5,
-    title: "Data Analytics & Insights",
-    description:
-      "Transform raw data into actionable insights with real-time analytics, dashboards, and reporting tools.",
+    title: "slide5.title",
+    description: "slide5.description",
     image: "https://picsum.photos/id/20/1600/900", // data / analytics
     gradient: "from-teal-400 to-cyan-600",
   },
@@ -60,19 +56,19 @@ export const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [api, setApi] = useState(null);
 
-  // Sync carousel API with current slide state
-  const handleSlideChange = () => {
-    if (api) {
-      setCurrentSlide(api.selectedIndex);
-    }
-  };
-
   // Set up carousel API listener
   React.useEffect(() => {
     if (!api) return;
 
+    const handleSlideChange = () => {
+      setCurrentSlide(api.selectedScrollSnap());
+    };
+
+    // Set initial state
+    handleSlideChange();
+
+    // Listen for slide changes
     api.on("select", handleSlideChange);
-    handleSlideChange(); // Set initial state
 
     return () => {
       api.off("select", handleSlideChange);
@@ -89,26 +85,34 @@ export const Hero = () => {
   return (
     <>
       {/* Main Hero Carousel */}
-      <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 group">
         <div className="w-full py-6 sm:py-10 lg:py-12">
-          <div className="w-full max-w-full">
+          <div className="w-full max-w-full relative px-4 sm:px-6 md:px-8 lg:px-12">
             <Carousel className="w-full" opts={{ loop: true }} setApi={setApi}>
               <CarouselContent className="m-0">
                 {heroSlides.map((slide, index) => (
-                  <CarouselItem key={slide.id} className="p-0 md:p-0">
+                  <CarouselItem key={slide.id} className="px-4 md:px-9">
                     <HeroSlide slide={slide} index={index} t={t} />
                   </CarouselItem>
                 ))}
               </CarouselContent>
-
-              {/* Navigation Buttons */}
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10 hidden md:block">
-                <CarouselPrevious className="relative border-2 border-cyan-500 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 w-12 h-12" />
-              </div>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10 hidden md:block">
-                <CarouselNext className="relative border-2 border-cyan-500 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 w-12 h-12" />
-              </div>
             </Carousel>
+
+            {/* Navigation Buttons - Show on hover */}
+            <button
+              onClick={() => api?.scrollPrev()}
+              className="absolute left-2 sm:left-4 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 border-2 border-transparent hover:border-cyan-500 opacity-0 group-hover:opacity-100 z-10"
+              aria-label="Previous slide"
+            >
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+            <button
+              onClick={() => api?.scrollNext()}
+              className="absolute right-2 sm:right-4 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 border-2 border-transparent hover:border-cyan-500 opacity-0 group-hover:opacity-100 z-10"
+              aria-label="Next slide"
+            >
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
 
             {/* Dot Indicators */}
             <div className="flex justify-center gap-2 mt-6 sm:mt-8">
@@ -118,10 +122,11 @@ export const Hero = () => {
                   onClick={() => handleDotClick(index)}
                   className={`transition-all duration-300 rounded-full ${
                     index === currentSlide
-                      ? "w-8 bg-cyan-600 dark:bg-cyan-500"
-                      : "w-2.5 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
-                  } h-2.5`}
+                      ? "w-8 h-2.5 bg-cyan-600 dark:bg-cyan-500"
+                      : "w-2.5 h-2.5 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                  }`}
                   aria-label={`Go to slide ${index + 1}`}
+                  aria-current={index === currentSlide ? "true" : "false"}
                 />
               ))}
             </div>
@@ -196,7 +201,7 @@ function BrandLogosCarousel({ t }) {
 function HeroSlide({ slide, index, t }) {
   return (
     <div
-      className={`flex flex-col md:flex-row items-center gap-6 sm:gap-8 lg:gap-12 py-6 px-4 sm:px-6 md:px-8 lg:px-12 h-[450px] md:h-[350px]`}
+      className={`flex flex-col md:flex-row items-center gap-6 sm:gap-8 lg:gap-12 py-6 h-[450px] md:h-[350px]`}
     >
       {/* Text Content */}
       <div className="flex-1 w-full md:w-auto flex items-center">

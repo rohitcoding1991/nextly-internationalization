@@ -22,11 +22,29 @@
     }
   },
   "Hero": {
-    "title": "Kostenlose Landingpage-Vorlage für Startups",
-    "description": "Nextly ist eine kostenlose Landingpage- und Marketing-Website-Vorlage für Startups und Indie-Projekte. Es wurde mit Next.js und TailwindCSS erstellt. Und es ist vollständig Open Source.",
     "button": "Erfahren Sie mehr",
     "view": "Ansicht auf Github",
-    "info": "Vertrauenswürdig von <span>2000+</span> Kunden weltweit"
+    "info": "Vertrauenswürdig von <span>2000+</span> Kunden weltweit",
+    "slide1": {
+      "title": "Moderne Softwareentwicklung",
+      "description": "Erstellen Sie Hochleistungsanwendungen mit modernen Frameworks, sauberer Architektur und skalierbaren Entwicklungspraktiken."
+    },
+    "slide2": {
+      "title": "Cloud & Infrastruktur",
+      "description": "Bereitstellen, skalieren und verwalten Sie Anwendungen nahtlos mit Cloud-nativer Infrastruktur und DevOps-Automatisierung."
+    },
+    "slide3": {
+      "title": "KI & Maschinelles Lernen",
+      "description": "Nutzen Sie künstliche Intelligenz und maschinelles Lernen, um Arbeitsabläufe zu automatisieren und intelligentere Entscheidungen zu treffen."
+    },
+    "slide4": {
+      "title": "Cybersicherheitslösungen",
+      "description": "Schützen Sie Ihre Systeme und Daten mit Sicherheit, Überwachung und Compliance-fähigen Lösungen auf Unternehmensniveau."
+    },
+    "slide5": {
+      "title": "Datenanalyse & Einblicke",
+      "description": "Verwandeln Sie Rohdaten in umsetzbare Erkenntnisse mit Echtzeitanalysen, Dashboards und Berichtstools."
+    }
   },
   "RootPage": {
     "info": "Vorteile von Nextly",
